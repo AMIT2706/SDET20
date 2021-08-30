@@ -26,7 +26,7 @@ import com.vtiger.comcast.pomrepositorylib.Organizations;
 @Listeners(com.vtiger.comcast.genericutilities.ListenerImplementationClass.class)
 public class CreateOrganization extends BaseClass {
 
-	@Test(groups = "regressiontesting")
+	@Test(groups = "smoketesting")
 	public void CreateOrganizationWithBillingAddressTest() throws Throwable {
 
 		int randomInt = jLib.getRanDomNumber();
@@ -70,7 +70,7 @@ public class CreateOrganization extends BaseClass {
 //			System.out.println("Billing Address:: Billing Address is Not Verfied  Successfully");
 	}
 
-	@Test(groups = "regionalregresssiontesting")
+	@Test(groups = "regresssiontesting")
 
 	public void CreateOrganizationWithoutShippingAddTest() throws Throwable {
 
