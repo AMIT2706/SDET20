@@ -32,7 +32,7 @@ public class Login {
 		return loginBtn;
 	}
 
-	public void loginToApp(String Username, String Password, boolean flag) {
+	public void loginToApp(String Username, String Password) {
 		userNameEdt.sendKeys(Username);
 		passwordNameEdt.sendKeys(Password);
 		loginBtn.click();

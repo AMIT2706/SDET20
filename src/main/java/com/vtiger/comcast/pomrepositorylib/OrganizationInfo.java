@@ -13,6 +13,12 @@ public class OrganizationInfo {
 
 	@FindBy(xpath = "//span[@id='dtlview_Industry']/font")
 	private WebElement IndustryTypeInfo;
+	
+	
+	public WebElement getIndustryTypeInfo() {
+		return IndustryTypeInfo;
+	}
+
 
 	@FindBy(xpath = "//span[@class='dvHeaderText']")
 	private WebElement SuccessfulMsg;
@@ -21,9 +27,6 @@ public class OrganizationInfo {
 		return SuccessfulMsg;
 	}
 
-	public WebElement getIndustryTypeInfo() {
-		return IndustryTypeInfo;
-	}
 
 	@FindBy(xpath = "//span[@id='dtlview_Billing Address']")
 	private WebElement BillingInfo;
@@ -40,4 +43,4 @@ public class OrganizationInfo {
 		return ShippingInfo;
 	}
 
-}
+} 

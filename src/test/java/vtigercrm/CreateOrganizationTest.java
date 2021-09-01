@@ -24,7 +24,7 @@ import com.vtiger.comcast.pomrepositorylib.OrganizationInfo;
 import com.vtiger.comcast.pomrepositorylib.Organizations;
 
 @Listeners(com.vtiger.comcast.genericutilities.ListenerImplementationClass.class)
-public class CreateOrganization extends BaseClass {
+public class CreateOrganizationTest extends BaseClass {
 
 	@Test(groups = "smoketesting")
 	public void CreateOrganizationWithBillingAddressTest() throws Throwable {

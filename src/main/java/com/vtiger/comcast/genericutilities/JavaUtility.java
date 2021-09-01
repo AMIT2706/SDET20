@@ -44,7 +44,7 @@ public class JavaUtility {
 	public String getSystmeDate_YYYY_MM__DD() {
 		Date date = new Date();
 		String systemDateAndTime = date.toString();
-		System.out.println(systemDateAndTime);
+		//System.out.println(systemDateAndTime);
 		String[] arr = systemDateAndTime.split(" ");
 		String DD = arr[2];
 		String YYYY = arr[5];

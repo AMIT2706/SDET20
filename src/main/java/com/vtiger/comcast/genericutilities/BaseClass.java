@@ -1,5 +1,7 @@
 package com.vtiger.comcast.genericutilities;
 
+import java.time.LocalDateTime;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -15,32 +17,43 @@ import com.vtiger.comcast.pomrepositorylib.Login;
 public class BaseClass {
 	public WebDriver driver;
 	public static WebDriver sDriver;
-	
-       /*Object Creation for Lib*/
-		public JavaUtility jLib = new JavaUtility();
-		public WebDriverUtility wLib = new WebDriverUtility();
-		public FileUtitlity fLib = new FileUtitlity();
-		public ExcelUtility eLib = new ExcelUtility();
-	
-	 @BeforeSuite(groups= {"smoketesting","regressiontesting"})
-	
+
+	/* Object Creation for Lib */
+	public JavaUtility jLib = new JavaUtility();
+	public WebDriverUtility wLib = new WebDriverUtility();
+	public FileUtitlity fLib = new FileUtitlity();
+	public ExcelUtility eLib = new ExcelUtility();
+
+//		public ExtentHtmlReporter reporter;
+//		public ExtentReports reports;
+//		public ExtentTest test;
+
+	@BeforeSuite(groups = { "smoketesting", "regressiontesting" })
+
 	public void configBS() {
+		String ldt = LocalDateTime.now().toString().replace(":", "-");
+//			reporter = new ExtentHtmlReporter("./VtigerProject/ExtentReports/CreateNewLeadReports"+ldt+".html");
+//			reports = new ExtentReports();
+//			reports.attachReporter(reporter);
+//			
+//			reporter.config().setDocumentTitle("Create New Lead Test Report");
+//			reporter.config().setTheme(Theme.DARK);
+		System.out.println("====JDBC Connection Before Suite=======");
 		System.out.println("========================connect to DB========================");
 	}
-		
-	@BeforeClass(groups= {"smoketesting","regressiontesting"})
+
+	@BeforeClass(groups = { "smoketesting", "regressiontesting" })
 	public void configBC() {
-		
+
 		System.out.println("=============Launch the Browser=======");
 		driver = new ChromeDriver();
 		wLib.waitUntilPageLoad(driver);
 		wLib.maximizeBrowser(driver);
-		sDriver=driver;
+		sDriver = driver;
 
 	}
 
-
-   //@Parameters("Browser")
+	// @Parameters("Browser")
 //@BeforeClass
 //public void configBC(String Browser) {
 //	System.out.println("=====Launching Browser=======");
@@ -57,41 +70,36 @@ public class BaseClass {
 //	wLib.waitUntilPageLoad(driver);
 //}
 
-
-	
-	@BeforeMethod(groups= {"smoketesting","regressiontesting"})
+	@BeforeMethod(groups = { "smoketesting", "regressiontesting" })
 	public void configBM() throws Throwable {
-		/*common Data*/
+		/* common Data */
 		String USERNAME = fLib.getPropertyKeyValue("username");
 		String PASSWORD = fLib.getPropertyKeyValue("password");
 		String URL = fLib.getPropertyKeyValue("url");
 		String BROWSER = fLib.getPropertyKeyValue("browser");
-		/* Navigate to app*/
-		   driver.get(URL);
-	        /* step 1 : login */
-	        Login loginPage = new Login(driver);
-	        loginPage.loginToApp(USERNAME, PASSWORD);
+		/* Navigate to app */
+		driver.get(URL);
+		/* step 1 : login */
+		Login loginPage = new Login(driver);
+		loginPage.loginToApp(USERNAME, PASSWORD);
 	}
-	
-	
-	@AfterMethod(groups= {"smoketesting","regressiontesting"})
+
+	@AfterMethod(groups = { "smoketesting", "regressiontesting" })
 	public void configAM() {
-		
-	      /*step 6 : logout*/
+		/* step 6 : logout */
 		HomePage homePage = new HomePage(driver);
-        homePage.logout();
+		homePage.logout();
 	}
-	
-	@AfterClass(groups= {"smoketesting","regressiontesting"})
+
+	@AfterClass(groups = { "smoketesting", "regressiontesting" })
 	public void configAC() {
 		System.out.println("=============Close the Browser=======");
 		driver.quit();
 	}
-	
-	@AfterSuite(groups= {"smoketesting","regressiontesting"})
+
+	@AfterSuite(groups = { "smoketesting", "regressiontesting" })
 	public void configAS() {
+		// report.flush();
 		System.out.println("========================close DB========================");
 	}
 }
-
-

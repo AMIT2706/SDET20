@@ -5,7 +5,10 @@
 	<groupId>SDET20</groupId>
 	<artifactId>SDET20</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
+	<properties>
+     <maven.compiler.source>1.8</maven.compiler.source>
+     <maven.compiler.target>1.8</maven.compiler.target>
+</properties>
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -42,13 +45,13 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.11.0</version>
 		</dependency>
-		
-		
+
+
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>7.4.0</version>
-			<scope>test</scope>
+
 		</dependency>
 
 		<dependency>
@@ -60,29 +63,44 @@
 
 	</dependencies>
 	
+<build>
+   <plugins>
+   <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+            <suiteXmlFiles>
+						<!-- TestNG suite XML files -->
+						<suiteXmlFile>RegressionTestingtestng.xml</suiteXmlFile>
+					</suiteXmlFiles>
+        </configuration>
+    </plugin>
+   </plugins>
+   </build>
 
-	<build>
+
+	<!-- <build>
 		<plugins>
-			<!-- Below plug-in is used to execute tests -->
+			Below plug-in is used to execute tests
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.18.1</version>
 				<configuration>
 					<suiteXmlFiles>
-						<!-- TestNG suite XML files -->
+						TestNG suite XML files
 						<suiteXmlFile>RegressionTestingtestng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
-			<plugin>
-			    <artifactId>maven-compiler-plugin</artifactId>
-			    <version>3.8.0</version>
-			</plugin>
 		</plugins>
 	</build>
-	
-	
+ -->
+
 </project>
 
 

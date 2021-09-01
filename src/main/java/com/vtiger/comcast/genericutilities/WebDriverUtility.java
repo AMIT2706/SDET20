@@ -1,5 +1,5 @@
 package com.vtiger.comcast.genericutilities;
-
+ 
 import java.io.File;
 import java.util.Iterator;
 import java.util.Set;
@@ -122,7 +122,7 @@ public class WebDriverUtility {
 	}
 
 	/**
-	 * This method helps to switch from one wondow to another
+	 * This method helps to switch from one window to another
 	 * 
 	 * @param driver
 	 * @param partialWinTitle
